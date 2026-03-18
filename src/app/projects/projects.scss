@@ -1,0 +1,30 @@
+$base-color: hsl(var(--accent));
+$text-color: hsl(var(--txt));
+
+.projects-page {
+  width: 100%;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-position: center;
+  font-size: 55px;
+}
+
+.text-zone {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40%;
+  max-height: 90%;
+}
+h1 {
+  color: $base-color;
+  font-size: 56px;
+  line-height: 53px;
+  margin: 0;
+  font-weight: 400;
+}

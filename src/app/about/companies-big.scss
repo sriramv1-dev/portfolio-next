@@ -1,0 +1,249 @@
+$menu-width: 350px;
+$scene-width: 1200px;
+$scene-height: 450px;
+
+$base-color: hsl(var(--accent));
+$text-color: hsl(var(--text));
+
+$companies: TCS, T1D1, ManTechApps, CC, TDH;
+
+$colors: (
+  white: hsl(var(--txt)),
+  gray: hsl(var(--txt)),
+  TCS: hsl(var(--companies-tcs)),
+  T1D1: hsl(var(--companies-t1d1)),
+  ManTechApps: hsl(var(--companies-mantechapps)),
+  CC: hsl(var(--companies-cc)),
+  TDH: hsl(var(--companies-tdh)),
+);
+
+$logos: (
+  TCS: url('/images/companies/TCS.png'),
+  T1D1: url('/images/companies/Tampa1.png'),
+  ManTechApps: url('/images/companies/MANTECH.png'),
+  CC: url('/images/companies/DATIS.png'),
+  TDH: url('/images/companies/Teladoc_Health.png'),
+);
+
+@function get-company-color($color-name) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get($colors, $color-name);
+  } @else {
+    @warn "This color key doesn't exist.";
+  }
+}
+
+@function get-logo-url($logo) {
+  @if map-has-key($logos, $logo) {
+    @return map-get($logos, $logo);
+  } @else {
+    @warn "This logo key doesn't exist.";
+  }
+}
+
+@keyframes slidein {
+  0% {
+    top: -$scene-height;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+@keyframes slideout {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: -$scene-height;
+    opacity: 0;
+  }
+}
+
+.companies-page {
+  width: 100%;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-position: center;
+  font-size: 55px;
+
+  #scene {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: $scene-width;
+    height: $scene-height;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: 2px solid $base-color;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 16px;
+
+    #left-zone {
+      height: 75%;
+      flex-grow: 0;
+      display: flex;
+      width: $menu-width;
+      align-items: center;
+      justify-content: left;
+
+      .list {
+        display: flex;
+        list-style: none;
+        align-content: stretch;
+        flex-direction: column;
+        flex-grow: 1;
+        margin: 0;
+        padding: 0;
+
+        li.item {
+          color: get-company-color(gray);
+          input[type='radio'] {
+            display: none;
+
+            & ~ label {
+              display: block;
+              opacity: 0.5;
+              height: 50px;
+              text-align: center;
+              line-height: 50px;
+
+              &:first-letter {
+                text-transform: uppercase;
+              }
+
+              &:hover {
+                opacity: 0.75;
+                cursor: pointer;
+              }
+
+              @each $company in $companies {
+                &.label_#{$company} {
+                  &:before {
+                    content: ' ';
+                    display: block;
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    margin: 0px 12px 0px 12px;
+                    background-image: get-logo-url($company);
+                    background-position: center;
+                    background-size: 50% 50%;
+                    background-repeat: no-repeat;
+                    text-align: left;
+                    background-size: contain;
+                  }
+                }
+              }
+            }
+
+            & ~ .content {
+              position: absolute;
+              left: $menu-width;
+              top: -$scene-height;
+              width: $scene-width - $menu-width;
+              height: $scene-height;
+
+              animation-duration: 0.75s;
+              animation-name: slideout;
+              animation-timing-function: ease-out;
+
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              @each $company in $companies {
+                &.content_#{$company} {
+                  .company-logo {
+                    height: 150px;
+                    width: 200px;
+                    background-image: get-logo-url($company);
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                  }
+
+                  h3 {
+                    color: get-company-color(gray);
+                  }
+                  .description {
+                    white-space: pre-wrap;
+                    margin: 0px 10px 20px 20px;
+                    padding: 10px 0px;
+                    overflow-x: scroll;
+                    color: get-company-color($company);
+                    text-align: left;
+                    justify-content: start;
+                  }
+                }
+              }
+
+              h1 {
+                &:first-letter {
+                  text-transform: uppercase;
+                }
+              }
+              p {
+                max-width: 50%;
+                text-align: center;
+              }
+            }
+
+            &:checked {
+              & ~ label {
+                opacity: 1;
+                animation: all 1s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+                @each $company in $companies {
+                  &.label_#{$company} {
+                    color: get-company-color($company);
+                    border-right: solid 15px get-company-color($company);
+                  }
+                }
+              }
+
+              & ~ .content {
+                animation-duration: 0.75s;
+                animation-name: slidein;
+                animation-fill-mode: forwards;
+                animation-timing-function: cubic-bezier(
+                  0.455,
+                  0.03,
+                  0.515,
+                  0.955
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+
+    #middle-border {
+      background-color: $base-color;
+      height: 75%;
+      flex-grow: 1;
+      max-width: 2px;
+      z-index: 0;
+    }
+
+    #right-zone {
+      height: 100%;
+      flex-grow: 3;
+    }
+  }
+}

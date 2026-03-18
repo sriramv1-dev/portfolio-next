@@ -1,0 +1,42 @@
+$base-color: hsl(var(--accent));
+$text-color: hsl(var(--txt));
+
+.skills-page2 {
+  color: $text-color;
+  height: 100vh;
+  min-height: 95%;
+  overflow-y: scroll;
+  margin: 0px 5px;
+  width: auto;
+  padding: 50px 50px 0px 50px;
+
+  .text-zone {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40%;
+    max-height: 95%;
+  }
+
+  ul {
+    list-style-type: none;
+    font-size: 18px;
+  }
+}
+
+.d-tree-container {
+  display: flex;
+  margin: '5px';
+  list-style: none;
+  padding: 0;
+}
+
+.d-tree-node {
+  margin: 5px;
+  min-width: 150px;
+}
+
+.d-tree-toggler.active {
+  transform: translateX(-50%);
+}

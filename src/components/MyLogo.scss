@@ -1,0 +1,75 @@
+$base-color: hsl(var(--accent));
+$secondary-color: hsl(var(--accent1));
+$text-color: hsl(var(--txt));
+$bg2-color: hsl(var(--bg2));
+
+$TCS: hsl(var(--companies-tcs));
+$T1D1: hsl(var(--companies-t1d1));
+$ManTechApps: hsl(var(--companies-mantechapps));
+$CC: hsl(var(--companies-cc));
+$TDH: hsl(var(--companies-tdh));
+
+.logo-hair {
+  fill: $base-color;
+  stroke: $secondary-color;
+}
+
+.logo-shirt {
+  stroke: $secondary-color;
+  fill: $secondary-color;
+  stroke-width: 5;
+}
+
+.logo-pant {
+  fill: #7a7878;
+}
+
+.logo-shirt-collar {
+  fill: #65b579;
+  stroke: #7a7878;
+  stroke-width: 2;
+}
+
+.logo-laptop-l1 {
+  fill: $base-color;
+}
+
+.logo-laptop-l2 {
+  fill: $base-color;
+}
+
+.logo-laptop-l3 {
+  fill: $bg2-color;
+}
+
+.logo-laptop-l4 {
+  fill: $TDH;
+}
+
+.logo-laptop-l5 {
+  fill: $base-color;
+}
+
+.logo-laptop-l6 {
+  fill: transparent;
+}
+
+.logo-laptop-l7 {
+  fill: transparent;
+}
+
+.logo-laptop-l8 {
+  fill: transparent;
+}
+
+.logo-laptop-l9 {
+  fill: transparent;
+}
+
+.logo-laptop-l10 {
+  fill: transparent;
+}
+
+.logo-laptop-l11 {
+  fill: transparent;
+}

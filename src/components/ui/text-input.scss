@@ -1,0 +1,39 @@
+$base-color: hsl(var(--accent));
+$text-color: hsl(var(--text));
+$bg-color: hsl(var(--bg));
+$bg2-color: hsl(var(--bg2));
+$error-color: red;
+
+.textInput {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  font-size: 15px;
+
+  input {
+    padding: 15px;
+    font-size: 18px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 2px solid $base-color;
+    background-color: $bg2-color;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  span {
+    padding: 3px;
+    color: $error-color;
+    display: none;
+  }
+
+  input:invalid[focused='true'] {
+    border: 2px solid $error-color;
+  }
+
+  input:invalid[focused='true'] ~ span {
+    display: block;
+  }
+}

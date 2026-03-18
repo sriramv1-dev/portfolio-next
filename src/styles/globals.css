@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&family=Roboto&display=swap');
+@import "animate.css";
+
+/* ─── CSS Custom Properties (from index.scss) ─── */
+:root {
+  --_hue: 100;
+  --_size: 1.8rem;
+  --_radius: 0.2em;
+  --_tspeed_fast: 180ms;
+  --_tspeed_slow: 300ms;
+  --_ttype_squish: cubic-bezier(0.86, -0.1, 0.27, 1.15);
+
+  /* Light Mode */
+  --bg--light: var(--_hue) 3% 94%;
+  --bg2--light: var(--_hue) 50% 84%;
+  --txt--light: var(--_hue) 40% 5%;
+  --accent--light: var(--_hue) 55% 50%;
+  --accent1--light: 10 80% 60%;
+  --muted--light: var(--_hue) 30% 99%;
+
+  --skills-front-end-light: 166 42% 49%;
+  --skills-web-light: 39 100% 50%;
+  --skills-react-js-light: 192 60% 68%;
+  --skills-mobile-light: 100 50% 50%;
+  --skills-desktop-light: 273 59% 74%;
+  --skills-back-end-light: 92 86% 35%;
+  --skills-data-light: 48 61% 54%;
+  --skills-cloud-light: 203 77% 43%;
+  --skills-ide-tools-light: 345 95% 71%;
+  --skills-languages-light: 337 88% 40%;
+  --skills-javascript-light: 53 66% 61%;
+  --skills-typescript-light: 216 48% 49%;
+  --skills-c-sharp-light: 108 46% 41%;
+  --skills-dart-light: 213 59% 37%;
+
+  --companies-tcs-light: 195, 50%, 50%;
+  --companies-t1d1-light: 15, 48%, 64%;
+  --companies-mantechapps-light: 157, 31%, 61%;
+  --companies-cc-light: 29, 58%, 62%;
+  --companies-tdh-light: 198, 55%, 59%;
+
+  /* Dark Mode */
+  --bg--dark: var(--_hue) 15% 10%;
+  --bg2--dark: var(--_hue) 50% 6%;
+  --txt--dark: var(--_hue) 30% 88%;
+  --accent--dark: var(--_hue) 50% 50%;
+  --accent1--dark: 10 55% 50%;
+  --muted--dark: var(--_hue) 20% 4%;
+
+  --skills-front-end-dark: 166 98% 49%;
+  --skills-web-dark: 39 75% 50%;
+  --skills-react-js-dark: 192 95% 68%;
+  --skills-mobile-dark: 100 69% 63%;
+  --skills-desktop-dark: 273 59% 74%;
+  --skills-back-end-dark: 92 86% 35%;
+  --skills-data-dark: 48 94% 54%;
+  --skills-cloud-dark: 203 77% 43%;
+  --skills-ide-tools-dark: 345 95% 71%;
+  --skills-languages-dark: 337 88% 40%;
+  --skills-javascript-dark: 53 80% 61%;
+  --skills-typescript-dark: 216 48% 49%;
+  --skills-c-sharp-dark: 108 84% 41%;
+  --skills-dart-dark: 213 90% 37%;
+
+  --companies-tcs-dark: 195, 100%, 50%;
+  --companies-t1d1-dark: 15, 78%, 64%;
+  --companies-mantechapps-dark: 157, 31%, 61%;
+  --companies-cc-dark: 29, 85%, 62%;
+  --companies-tdh-dark: 198, 67%, 59%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: var(--bg--dark);
+    --bg2: var(--bg2--dark);
+    --txt: var(--txt--dark);
+    --accent: var(--accent--dark);
+    --accent1: var(--accent1--dark);
+    --muted: var(--muted--dark);
+    --skills-front-end: var(--skills-front-end-dark);
+    --skills-web: var(--skills-web-dark);
+    --skills-react-js: var(--skills-react-js-dark);
+    --skills-mobile: var(--skills-mobile-dark);
+    --skills-desktop: var(--skills-desktop-dark);
+    --skills-back-end: var(--skills-back-end-dark);
+    --skills-data: var(--skills-data-dark);
+    --skills-cloud: var(--skills-cloud-dark);
+    --skills-ide-tools: var(--skills-ide-tools-dark);
+    --skills-languages: var(--skills-languages-dark);
+    --skills-javascript: var(--skills-javascript-dark);
+    --skills-typescript: var(--skills-typescript-dark);
+    --skills-c-sharp: var(--skills-c-sharp-dark);
+    --skills-dart: var(--skills-dart-dark);
+    --companies-tcs: var(--companies-tcs-dark);
+    --companies-t1d1: var(--companies-t1d1-dark);
+    --companies-mantechapps: var(--companies-mantechapps-dark);
+    --companies-cc: var(--companies-cc-dark);
+    --companies-tdh: var(--companies-tdh-dark);
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: var(--bg--light);
+    --bg2: var(--bg2--light);
+    --txt: var(--txt--light);
+    --accent: var(--accent--light);
+    --accent1: var(--accent1--light);
+    --muted: var(--muted--light);
+    --skills-front-end: var(--skills-front-end-light);
+    --skills-web: var(--skills-web-light);
+    --skills-react-js: var(--skills-react-js-light);
+    --skills-mobile: var(--skills-mobile-light);
+    --skills-desktop: var(--skills-desktop-light);
+    --skills-back-end: var(--skills-back-end-light);
+    --skills-data: var(--skills-data-light);
+    --skills-cloud: var(--skills-cloud-light);
+    --skills-ide-tools: var(--skills-ide-tools-light);
+    --skills-languages: var(--skills-languages-light);
+    --skills-javascript: var(--skills-javascript-light);
+    --skills-typescript: var(--skills-typescript-light);
+    --skills-c-sharp: var(--skills-c-sharp-light);
+    --skills-dart: var(--skills-dart-light);
+    --companies-tcs: var(--companies-tcs-light);
+    --companies-t1d1: var(--companies-t1d1-light);
+    --companies-mantechapps: var(--companies-mantechapps-light);
+    --companies-cc: var(--companies-cc-light);
+    --companies-tdh: var(--companies-tdh-light);
+    color-scheme: light;
+  }
+}
+
+:root[color-scheme='dark'] {
+  --bg: var(--bg--dark);
+  --bg2: var(--bg2--dark);
+  --txt: var(--txt--dark);
+  --accent: var(--accent--dark);
+  --accent1: var(--accent1--dark);
+  --muted: var(--muted--dark);
+  --skills-front-end: var(--skills-front-end-dark);
+  --skills-web: var(--skills-web-dark);
+  --skills-react-js: var(--skills-react-js-dark);
+  --skills-mobile: var(--skills-mobile-dark);
+  --skills-desktop: var(--skills-desktop-dark);
+  --skills-back-end: var(--skills-back-end-dark);
+  --skills-data: var(--skills-data-dark);
+  --skills-cloud: var(--skills-cloud-dark);
+  --skills-ide-tools: var(--skills-ide-tools-dark);
+  --skills-languages: var(--skills-languages-dark);
+  --skills-javascript: var(--skills-javascript-dark);
+  --skills-typescript: var(--skills-typescript-dark);
+  --skills-c-sharp: var(--skills-c-sharp-dark);
+  --skills-dart: var(--skills-dart-dark);
+  --companies-tcs: var(--companies-tcs-dark);
+  --companies-t1d1: var(--companies-t1d1-dark);
+  --companies-mantechapps: var(--companies-mantechapps-dark);
+  --companies-cc: var(--companies-cc-dark);
+  --companies-tdh: var(--companies-tdh-dark);
+  color-scheme: dark;
+}
+
+:root[color-scheme='light'] {
+  --bg: var(--bg--light);
+  --bg2: var(--bg2--light);
+  --txt: var(--txt--light);
+  --accent: var(--accent--light);
+  --accent1: var(--accent1--light);
+  --muted: var(--muted--light);
+  --skills-front-end: var(--skills-front-end-light);
+  --skills-web: var(--skills-web-light);
+  --skills-react-js: var(--skills-react-js-light);
+  --skills-mobile: var(--skills-mobile-light);
+  --skills-desktop: var(--skills-desktop-light);
+  --skills-back-end: var(--skills-back-end-light);
+  --skills-data: var(--skills-data-light);
+  --skills-cloud: var(--skills-cloud-light);
+  --skills-ide-tools: var(--skills-ide-tools-light);
+  --skills-languages: var(--skills-languages-light);
+  --skills-javascript: var(--skills-javascript-light);
+  --skills-typescript: var(--skills-typescript-light);
+  --skills-c-sharp: var(--skills-c-sharp-light);
+  --skills-dart: var(--skills-dart-light);
+  --companies-tcs: var(--companies-tcs-light);
+  --companies-t1d1: var(--companies-t1d1-light);
+  --companies-mantechapps: var(--companies-mantechapps-light);
+  --companies-cc: var(--companies-cc-light);
+  --companies-tdh: var(--companies-tdh-light);
+  color-scheme: light;
+}
+
+@media screen and (max-width: 768px) {
+  :root { --_size: 1.3rem; }
+}
+
+@media screen and (max-width: 1200px) {
+  body { overflow: visible; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --_tspeed_slow: 50ms;
+    --_tspeed_fast: 50ms;
+  }
+}
+
+/* ─── Base body styles (from index.scss) ─── */
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: 300 11px/1.4 'Reem Kufi Ink', sans-serif;
+  background-color: hsl(var(--bg));
+  color: hsl(var(--txt));
+  overflow: hidden;
+  display: block;
+}
+
+::selection {
+  background: hsl(var(--accent) / 0.8);
+  color: hsl(var(--bg));
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* ─── Layout (from layout.scss) ─── */
+.container {
+  width: 100%;
+  will-change: contents;
+  height: 100%;
+  min-height: 566px;
+  position: absolute;
+  opacity: 0;
+  margin: 0 auto;
+  z-index: 1;
+  transform-style: preserve-3d;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+@media (max-width: 1200px) {
+  .page { position: initial; }
+  .container {
+    height: auto;
+    position: initial;
+    min-height: inherit;
+  }
+}
+
+/* ─── Global components (from App.scss) ─── */
+.flat-button {
+  font-family: inherit;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 5px 9px;
+  border: 1px solid hsl(var(--txt));
+  border-radius: 5px;
+  float: left;
+  animation: fadeInAnimation 1s 1.8s backwards;
+  white-space: nowrap;
+}
+
+.flat-button:hover {
+  background: hsl(var(--bg));
+  color: hsl(var(--accent));
+  border: 1px solid hsl(var(--accent));
+}

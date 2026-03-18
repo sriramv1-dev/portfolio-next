@@ -1,0 +1,133 @@
+$base-color: hsl(var(--accent));
+$text-color: hsl(var(--text));
+$bg-color: hsl(var(--bg));
+$bg2-color: hsl(var(--bg2));
+
+$companies: TCS, T1D1, ManTechApps, CC, TDH;
+
+$colors: (
+  white: hsl(var(--txt)),
+  gray: hsl(var(--txt)),
+  TCS: hsl(var(--companies-tcs)),
+  T1D1: hsl(var(--companies-t1d1)),
+  ManTechApps: hsl(var(--companies-mantechapps)),
+  CC: hsl(var(--companies-cc)),
+  TDH: hsl(var(--companies-tdh)),
+);
+
+$logos: (
+  TCS: url('/images/companies/TCS.png'),
+  T1D1: url('/images/companies/Tampa1.png'),
+  ManTechApps: url('/images/companies/MANTECH.png'),
+  CC: url('/images/companies/DATIS.png'),
+  TDH: url('/images/companies/Teladoc_Health.png'),
+);
+
+@function get-company-color($color-name) {
+  @if map-has-key($colors, $color-name) {
+    @return map-get($colors, $color-name);
+  } @else {
+    @warn "This color key doesn't exist.";
+  }
+}
+
+@function get-logo-url($logo) {
+  @if map-has-key($logos, $logo) {
+    @return map-get($logos, $logo);
+  } @else {
+    @warn "This logo key doesn't exist.";
+  }
+}
+
+.companies-page-small {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow: scroll;
+  height: 95vh !important;
+  padding: 50px 0px 0px 0px;
+
+  .timeline-container {
+    display: flex;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px 0px 10px 0px;
+    gap: 20px 20px;
+    font-size: 18px;
+
+    @each $company in $companies {
+      $company-color: get-company-color($company);
+      $company-logo: get-logo-url($company);
+
+      .item_#{$company} {
+        display: flex;
+        width: 720px;
+        margin: 10px 5px 10px 5px;
+        border-radius: 10px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        border: 1px solid $company-color;
+
+        .company-logo_#{$company} {
+          display: flex;
+          min-height: 150px !important;
+          width: 200px;
+          background-image: $company-logo;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        .company-title {
+          display: flex;
+          flex-direction: row;
+          background: conic-gradient($company-color, $bg2-color);
+          width: 100%;
+          height: auto;
+          justify-content: space-between;
+
+          .company-name {
+            display: flex;
+            align-items: flex-start;
+            // justify-content: flex-end;
+            margin: 0px 10px;
+          }
+
+          .company-role {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin: 0px 10px;
+          }
+        }
+
+        .company-description {
+          color: $text-color;
+          display: flex;
+          overflow: wrap;
+          padding: 0px 0px 0px 10px;
+          white-space: pre-wrap;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 100px) {
+  @each $company in $companies {
+    $company-color: get-company-color($company);
+    $company-logo: get-logo-url($company);
+
+    .item_#{$company} {
+      width: 370px !important;
+
+      .company-title {
+        background: linear-gradient($company-color, $bg2-color) !important;
+      }
+    }
+  }
+}
