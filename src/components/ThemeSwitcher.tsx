@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import DynamicIcon from './DynamicIcon';
-import useTheme from '@/hooks/useTheme';
+import { useTheme } from '@/context/ThemeContext';
 import styles from './ThemeSwitcher.module.css';
 
 const ThemeSwitcher = () => {
