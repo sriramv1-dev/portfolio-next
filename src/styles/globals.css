@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Ink&family=Roboto&display=swap');
 @import "animate.css";
 
 /* ─── CSS Custom Properties (from index.scss) ─── */
@@ -38,6 +37,19 @@
   --companies-mantechapps-light: 157, 31%, 61%;
   --companies-cc-light: 29, 58%, 62%;
   --companies-tdh-light: 198, 55%, 59%;
+
+  /* Spacing tokens */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+
+  /* Typography tokens */
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 2rem;
 
   /* Dark Mode */
   --bg--dark: var(--_hue) 15% 10%;
@@ -209,7 +221,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font: 300 11px/1.4 'Reem Kufi Ink', sans-serif;
+  font: 300 11px/1.4 var(--font-reem-kufi-ink), sans-serif;
   background-color: hsl(var(--bg));
   color: hsl(var(--txt));
   overflow: hidden;

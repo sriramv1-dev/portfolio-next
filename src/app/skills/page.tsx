@@ -1,5 +1,36 @@
-import SkillsBig from './SkillsBig';
-import SkillsSmall from './SkillsSmall';
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const SkillsBig = dynamic(() => import('./SkillsBig'), {
+  ssr: false,
+  loading: () => (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '400px',
+      color: 'hsl(var(--txt))'
+    }}>
+      Loading skills...
+    </div>
+  ),
+});
+
+const SkillsSmall = dynamic(() => import('./SkillsSmall'), {
+  ssr: false,
+  loading: () => (
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '400px',
+      color: 'hsl(var(--txt))'
+    }}>
+      Loading skills...
+    </div>
+  ),
+});
 
 export default function SkillsPage() {
   return (
