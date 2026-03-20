@@ -1,4 +1,18 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Full Stack Developer specializing in React, JavaScript and TypeScript. Based in New Jersey.',
+  keywords: ['Sriram Voonna', 'Full Stack Developer', 'React developer', 'JavaScript', 'TypeScript'],
+  openGraph: {
+    title: 'Sriram Voonna | Full Stack Developer',
+    description: 'Full Stack Developer specializing in React, JavaScript and TypeScript.',
+    url: 'https://sriramvoonna.vercel.app',
+    siteName: 'Sriram Voonna Portfolio',
+    type: 'website',
+  },
+};
 import MyLogo from '@/components/MyLogo';
 import './home.scss';
 

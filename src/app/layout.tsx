@@ -28,8 +28,12 @@ const reemKufiInk = Reem_Kufi_Ink({
 });
 
 export const metadata: Metadata = {
-  title: "Sriram Voonna",
-  description: "Full Stack Developer / JavaScript",
+  metadataBase: new URL('https://sriramvoonna.vercel.app'),
+  title: {
+    default: 'Sriram Voonna | Full Stack Developer',
+    template: '%s | Sriram Voonna',
+  },
+  description: 'Full Stack Developer specializing in React, JavaScript and TypeScript.',
 };
 
 export default function RootLayout({
@@ -40,6 +44,30 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={`${roboto.variable} ${reemKufiInk.variable}`}>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Sriram Voonna',
+              jobTitle: 'Full Stack Developer',
+              url: 'https://sriramvoonna.vercel.app',
+              sameAs: [
+                'https://www.linkedin.com/in/sriramvoonna/',
+                'https://github.com/sriramv1-dev',
+              ],
+              knowsAbout: [
+                'React',
+                'TypeScript',
+                'JavaScript',
+                'Node.js',
+                'Azure',
+                'AWS',
+              ],
+            }),
+          }}
+        />
         <ThemeProvider>
           <Navbar />
           {children}

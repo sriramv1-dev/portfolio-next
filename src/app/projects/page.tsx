@@ -1,4 +1,15 @@
+import type { Metadata } from 'next';
 import './projects.scss';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Explore projects built by Sriram Voonna — React applications, full stack apps, and more.',
+  openGraph: {
+    title: 'Projects | Sriram Voonna',
+    url: 'https://sriramvoonna.vercel.app/projects',
+    type: 'website',
+  },
+};
 
 export default function ProjectsPage() {
   return (
