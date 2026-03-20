@@ -1,7 +1,7 @@
-# .claudeignore
 node_modules/
 .next/
 public/
+package-lock.json
 *.lock
 *.log
 dist/

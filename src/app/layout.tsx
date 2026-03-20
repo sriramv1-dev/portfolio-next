@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto, Reem_Kufi_Ink } from "next/font/google";
 import { Navbar } from "@/features/navigation";
 import Footer from "@/components/Footer";
+import PageTransition from "@/components/PageTransition";
 import { ThemeProvider } from "@/context/ThemeContext";
 import "../styles/globals.css";
 
@@ -70,7 +71,9 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <Navbar />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
           <Footer />
         </ThemeProvider>
       </body>
