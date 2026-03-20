@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://sriramvoonna.vercel.app/sitemap.xml',
+    sitemap: 'https://portfolio-next-pi-one.vercel.app/sitemap.xml',
   };
 }

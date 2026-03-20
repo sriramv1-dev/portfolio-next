@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Explore projects built by Sriram Voonna — React applications, full stack apps, and more.',
   openGraph: {
     title: 'Projects | Sriram Voonna',
-    url: 'https://sriramvoonna.vercel.app/projects',
+    url: 'https://portfolio-next-pi-one.vercel.app/projects',
     type: 'website',
   },
 };

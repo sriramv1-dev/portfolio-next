@@ -28,7 +28,7 @@ const reemKufiInk = Reem_Kufi_Ink({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sriramvoonna.vercel.app'),
+  metadataBase: new URL('https://portfolio-next-pi-one.vercel.app'),
   title: {
     default: 'Sriram Voonna | Full Stack Developer',
     template: '%s | Sriram Voonna',
@@ -52,7 +52,7 @@ export default function RootLayout({
               '@type': 'Person',
               name: 'Sriram Voonna',
               jobTitle: 'Full Stack Developer',
-              url: 'https://sriramvoonna.vercel.app',
+              url: 'https://portfolio-next-pi-one.vercel.app',
               sameAs: [
                 'https://www.linkedin.com/in/sriramvoonna/',
                 'https://github.com/sriramv1-dev',
