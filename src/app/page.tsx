@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import MyLogo from '@/components/MyLogo';
+import Hero from '@/features/home/Hero';
+import './home.scss';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -13,22 +15,11 @@ export const metadata: Metadata = {
     type: 'website',
   },
 };
-import MyLogo from '@/components/MyLogo';
-import './home.scss';
 
 export default function HomePage() {
   return (
     <div className="container home-page">
-      <div className="box1">
-        <h3>
-          Hi.. <br /> I am
-        </h3>
-        <h1>Sriram Voonna</h1>
-        <h2>Full Stack Developer / Javascript</h2>
-        <Link href="/contact" className="flat-button">
-          Contact Me
-        </Link>
-      </div>
+      <Hero />
       <div className="box2">
         <MyLogo />
       </div>
