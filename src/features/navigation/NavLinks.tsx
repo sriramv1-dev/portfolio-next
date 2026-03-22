@@ -13,7 +13,7 @@ import { NavRoute } from '@/types';
 
 const routes: NavRoute[] = [
   { key: 'home', label: 'Home', icon: IoHomeOutline, path: '/' },
-  { key: 'about', label: 'About', icon: IoBusinessOutline, path: '/about' },
+  { key: 'about', label: 'Companies', icon: IoBusinessOutline, path: '/about' },
   { key: 'projects', label: 'Projects', icon: IoExtensionPuzzleOutline, path: '/projects' },
   { key: 'skills', label: 'Skills', icon: IoBarChartOutline, path: '/skills' },
   { key: 'contact', label: 'Contact', icon: MdOutlineContactMail, path: '/contact' },
