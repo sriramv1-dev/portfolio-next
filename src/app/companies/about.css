@@ -1,0 +1,12 @@
+/* Relax body overflow when about page is mounted */
+body:has(.about-page) {
+  overflow-y: auto !important;
+}
+
+/* Override fixed-height absolute container for scrollable content */
+.container.about-page {
+  position: relative !important;
+  height: auto !important;
+  min-height: 100vh;
+  padding: 20px 0;
+}

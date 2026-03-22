@@ -7,7 +7,6 @@ import { useResponsive } from '@/hooks/useResponsive';
 import { useTheme } from '@/context/ThemeContext';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 import NavLinks from './NavLinks';
-import SocialLinks from './SocialLinks';
 import MobileMenu from './MobileMenu';
 import '@/components/Navbar.scss';
 
@@ -24,7 +23,6 @@ export default function Navbar() {
         <h1>SV</h1>
       </div>
       <NavLinks />
-      <SocialLinks />
       <div className="theme-switcher-nav"><ThemeSwitcher /></div>
       <button
         className={`flat-button ${isMenuOpen ? 'close-icon' : 'hamburger-icon'}`}

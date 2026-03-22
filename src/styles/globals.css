@@ -224,7 +224,6 @@ body {
   font: 300 11px/1.4 var(--font-reem-kufi-ink), sans-serif;
   background-color: hsl(var(--bg));
   color: hsl(var(--txt));
-  overflow: hidden;
   display: block;
 }
 
@@ -287,4 +286,8 @@ textarea {
   background: hsl(var(--bg));
   color: hsl(var(--accent));
   border: 1px solid hsl(var(--accent));
+}
+
+body:has(.home-page) {
+  overflow: hidden;
 }

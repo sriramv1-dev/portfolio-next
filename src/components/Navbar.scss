@@ -7,7 +7,7 @@ $bg2-color: hsl(var(--bg2));
   background-color: $bg2-color;
   width: 72px;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 3;
   min-height: 500px;
