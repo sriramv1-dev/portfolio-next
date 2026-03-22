@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import SectionReveal from '@/components/SectionReveal';
 import './projects.scss';
 
 export const metadata: Metadata = {
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Explore projects built by Sriram Voonna — React applications, full stack apps, and more.',
   openGraph: {
     title: 'Projects | Sriram Voonna',
-    url: 'https://portfolio-next-pi-one.vercel.app/projects',
+    url: 'https://sriram-voonna-portfolio.vercel.app/projects',
     type: 'website',
   },
 };
@@ -22,9 +23,9 @@ export default function ProjectsPage() {
           height: '100vh',
         }}
       >
-        <div className="text-zone">
+        <SectionReveal className="text-zone">
           <h1>My Projects...</h1>
-        </div>
+        </SectionReveal>
       </div>
     </div>
   );

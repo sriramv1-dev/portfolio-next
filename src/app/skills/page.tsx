@@ -1,17 +1,13 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import { motion } from 'framer-motion';
+import { useResponsive } from '@/hooks/useResponsive';
 
 const SkillsBig = dynamic(() => import('./SkillsBig'), {
   ssr: false,
   loading: () => (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '400px',
-      color: 'hsl(var(--txt))'
-    }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px', color: 'hsl(var(--txt))' }}>
       Loading skills...
     </div>
   ),
@@ -20,39 +16,28 @@ const SkillsBig = dynamic(() => import('./SkillsBig'), {
 const SkillsSmall = dynamic(() => import('./SkillsSmall'), {
   ssr: false,
   loading: () => (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '400px',
-      color: 'hsl(var(--txt))'
-    }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px', color: 'hsl(var(--txt))' }}>
       Loading skills...
     </div>
   ),
 });
 
+const fadeIn = {
+  hidden:  { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
 export default function SkillsPage() {
+  const { isDesktop } = useResponsive();
+
   return (
-    <>
-      {/* Desktop (≥1280px): D3 tree chart */}
-      <div className="skills-desktop">
-        <SkillsBig />
-      </div>
-
-      {/* Mobile/tablet (<1280px): collapsible tree */}
-      <div className="skills-mobile">
-        <SkillsSmall />
-      </div>
-
-      <style>{`
-        .skills-desktop { display: none; }
-        .skills-mobile  { display: block; }
-        @media (min-width: 1280px) {
-          .skills-desktop { display: block; }
-          .skills-mobile  { display: none; }
-        }
-      `}</style>
-    </>
+    <motion.div
+      variants={fadeIn}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+    >
+      {isDesktop ? <SkillsBig /> : <SkillsSmall />}
+    </motion.div>
   );
 }

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Technical skills of Sriram Voonna — React, TypeScript, Node.js, Azure, AWS, and more.',
   openGraph: {
     title: 'Skills | Sriram Voonna',
-    url: 'https://portfolio-next-pi-one.vercel.app/skills',
+    url: 'https://sriram-voonna-portfolio.vercel.app/skills',
     type: 'website',
   },
 };

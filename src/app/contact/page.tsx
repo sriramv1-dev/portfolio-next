@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import TextAreaComponent from '@/components/ui/TextAreaComponent';
 import TextInput from '@/components/ui/TextInput';
@@ -8,82 +9,47 @@ import MapComponent from './MapComponent';
 import './contact.scss';
 
 const inputs = [
-  {
-    id: 1,
-    name: 'name',
-    type: 'text',
-    placeholder: 'eg: Harry Skywalker',
-    errorMessage: 'Name should not be empty',
-    label: 'Full Name',
-    required: true,
-  },
-  {
-    id: 2,
-    name: 'email',
-    type: 'email',
-    placeholder: 'eg: abc@gmail.com',
-    errorMessage: 'It should be a valid email address!',
-    label: 'Email',
-    required: true,
-  },
-  {
-    id: 3,
-    name: 'subject',
-    type: 'text',
-    placeholder: 'Reg: Hola Namaste...',
-    errorMessage: 'Subject should not be empty',
-    label: 'Subject',
-    required: true,
-  },
-  {
-    id: 4,
-    name: 'message',
-    type: 'text',
-    placeholder: 'Message',
-    errorMessage: 'Message should not be empty',
-    label: 'Message',
-    required: true,
-  },
+  { id: 1, name: 'name',    type: 'text',  placeholder: 'eg: Harry Skywalker', errorMessage: 'Name should not be empty',          label: 'Full Name', required: true },
+  { id: 2, name: 'email',   type: 'email', placeholder: 'eg: abc@gmail.com',   errorMessage: 'It should be a valid email address!', label: 'Email',     required: true },
+  { id: 3, name: 'subject', type: 'text',  placeholder: 'Reg: Hola Namaste...', errorMessage: 'Subject should not be empty',       label: 'Subject',   required: true },
+  { id: 4, name: 'message', type: 'text',  placeholder: 'Message',             errorMessage: 'Message should not be empty',        label: 'Message',   required: true },
 ];
 
 const emailjsPublicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_API_KEY;
-const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const serviceID        = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const templateID       = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
+const slideIn = (direction: 'left' | 'right') => ({
+  hidden:  { opacity: 0, x: direction === 'left' ? -40 : 40 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' as const } },
+});
 
 export default function ContactPage() {
-  const [values, setValues] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [values, setValues] = useState({ name: '', email: '', subject: '', message: '' });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     emailjs.send(serviceID!, templateID!, values, emailjsPublicKey).then(
-      () => {
-        alert('Message sent succesfully!!!');
-        window.location.reload();
-      },
-      () => {
-        alert('Failed to send the message, please try again');
-      }
+      () => { alert('Message sent succesfully!!!'); window.location.reload(); },
+      () => { alert('Failed to send the message, please try again'); }
     );
   };
 
-  const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => setValues({ ...values, [e.target.name]: e.target.value });
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setValues({ ...values, [e.target.name]: e.target.value });
 
   return (
     <div className="container contact-page">
       <div className="contact-container">
-        <div className="item contact-form">
-          <div className="title">
-            <h2>Contact Me</h2>
-          </div>
 
+        <motion.div
+          className="item contact-form"
+          variants={slideIn('left')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
+          <div className="title"><h2>Contact Me</h2></div>
           <form onSubmit={handleSubmit}>
             {inputs.map((input) =>
               input.name === 'message' ? (
@@ -106,10 +72,18 @@ export default function ContactPage() {
               <button className="flat-button">Submit</button>
             </div>
           </form>
-        </div>
-        <div className="item map">
+        </motion.div>
+
+        <motion.div
+          className="item map"
+          variants={slideIn('right')}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
           <MapComponent />
-        </div>
+        </motion.div>
+
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Get in touch with Sriram Voonna — Full Stack Developer available for opportunities.',
   openGraph: {
     title: 'Contact | Sriram Voonna',
-    url: 'https://portfolio-next-pi-one.vercel.app/contact',
+    url: 'https://sriram-voonna-portfolio.vercel.app/contact',
     type: 'website',
   },
 };

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sriram Voonna | Full Stack Developer',
     description: 'Full Stack Developer specializing in React, JavaScript and TypeScript.',
-    url: 'https://portfolio-next-pi-one.vercel.app',
+    url: 'https://sriram-voonna-portfolio.vercel.app',
     siteName: 'Sriram Voonna Portfolio',
     type: 'website',
   },
