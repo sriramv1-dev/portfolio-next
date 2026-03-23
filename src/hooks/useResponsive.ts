@@ -4,8 +4,8 @@ import { useSyncExternalStore } from 'react';
 
 const queries = {
   mobile: '(max-width: 767px)',
-  tablet: '(min-width: 768px) and (max-width: 1024px)',
-  desktop: '(min-width: 1025px)',
+  tablet: '(min-width: 768px) and (max-width: 1279px)',
+  desktop: '(min-width: 1280px)',
 };
 
 function createMediaQueryStore(query: string) {

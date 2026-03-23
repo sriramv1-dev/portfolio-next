@@ -28,32 +28,28 @@ interface Props {
 
 export default function NavLinks({ isMobile = false, onLinkClick }: Props) {
   const pathname = usePathname();
-  const linksDiv    = (isMobile ? 'mobile-' : '') + 'links-div';
-  const linkContent = (isMobile ? 'mobile-' : '') + 'link-content';
 
   return (
-    <>
+    <div className="links-div">
       {routes.map(({ key, label, icon: Icon, path }) => {
         const isActive   = pathname === path;
         const isDisabled = comingSoon.includes(key);
 
         return (
-          <div key={`${key}-div`} className={linksDiv}>
-            <Link
-              key={key}
-              href={path}
-              className={`${isActive ? 'active' : ''} ${isDisabled ? 'nav-disabled' : ''}`}
-              {...(isMobile && onLinkClick ? { onClick: onLinkClick } : {})}
-              style={isDisabled ? { opacity: 0.35, pointerEvents: 'none' } : {}}
-            >
-              <div key={`${key}-content`} className={linkContent}>
-                <Icon />
-                <label key={`${key}-label`}>{label}</label>
-              </div>
-            </Link>
-          </div>
+          <Link
+            key={key}
+            href={path}
+            className={`${isActive ? 'active' : ''}`}
+            {...(isMobile && onLinkClick ? { onClick: onLinkClick } : {})}
+            style={isDisabled ? { opacity: 0.35, pointerEvents: 'none' } : {}}
+          >
+            <div className="link-content">
+              <Icon />
+              <label>{label}</label>
+            </div>
+          </Link>
         );
       })}
-    </>
+    </div>
   );
 }

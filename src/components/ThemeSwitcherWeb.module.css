@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 0;
+  margin-top: auto;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid hsl(var(--txt) / 0.2);
+  border-radius: 8px;
+  color: hsl(var(--txt));
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+.btn:hover { background: hsl(var(--txt) / 0.08); }
+.pickerPanel {
+  position: fixed;
+  bottom: 2%;
+  left: 80px;
+  padding: 1em 2em;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: hsl(var(--bg2));
+  border-radius: 8px;
+  border: 1px solid hsl(var(--txt) / 0.2);
+  z-index: 9999;
+}
+.closeBtn {
+  color: red;
+  border: 1px solid red;
+  border-radius: 6px;
+  background: none;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+.closeBtn:hover { background: red; color: white; }
+.slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(to right,
+    hsl(0,50%,50%), hsl(30,50%,50%), hsl(60,50%,50%),
+    hsl(90,50%,50%), hsl(120,50%,50%), hsl(150,50%,50%),
+    hsl(180,50%,50%), hsl(210,50%,50%), hsl(240,50%,50%),
+    hsl(270,50%,50%), hsl(300,50%,50%), hsl(330,50%,50%),
+    hsl(360,50%,50%)
+  );
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: hsl(var(--accent));
+  border: 2px solid hsl(var(--bg2));
+  cursor: pointer;
+}

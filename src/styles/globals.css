@@ -246,6 +246,7 @@ textarea {
   position: absolute;
   opacity: 0;
   margin: 0 auto;
+  padding-left: 72px;
   z-index: 1;
   transform-style: preserve-3d;
   animation: fadeIn 1s forwards;
@@ -264,6 +265,7 @@ textarea {
     height: auto;
     position: initial;
     min-height: inherit;
+    padding-left: 0;
   }
 }
 
