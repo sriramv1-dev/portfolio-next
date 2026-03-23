@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic';
 import { motion, Variants } from 'framer-motion';
-import { useResponsive } from '@/hooks/useResponsive';
 import { useState, useEffect } from 'react';
 
 const SkillsBig = dynamic(() => import('./SkillsBig'), {
@@ -29,14 +28,16 @@ const fadeIn: Variants = {
 };
 
 export default function SkillsPage() {
-  const { isDesktop } = useResponsive();
-  const [mounted, setMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const check = () => setIsDesktop(window.innerWidth >= 1025);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
-  if (!mounted) {
+  if (isDesktop === null) {
     return (
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '400px', color: 'hsl(var(--txt))' }}>
         Loading skills...

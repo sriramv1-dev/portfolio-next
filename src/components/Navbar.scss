@@ -102,10 +102,10 @@ $bg2-color: hsl(var(--bg2));
 
 .theme-switcher-nav {
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 2px !important;
+  gap: 8px !important;
   width: 100%;
   flex-wrap: nowrap !important;
   padding: 12px 0;
@@ -114,8 +114,8 @@ $bg2-color: hsl(var(--bg2));
 
 .theme-switcher-nav .theme-switcher-wrapper {
   display: flex !important;
-  flex-direction: row !important;
-  gap: 2px !important;
+  flex-direction: column !important;
+  gap: 8px !important;
   flex-wrap: nowrap !important;
   justify-content: center;
 }
