@@ -7,9 +7,6 @@ $text-color: hsl(var(--txt));
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  overflow: scroll;
-  height: 95vh !important;
-  padding: 50px 0px 0px 92px;
 
   h1 {
     color: $base-color;
@@ -27,9 +24,7 @@ $text-color: hsl(var(--txt));
     font-weight: 300;
   }
 
-  .flat-button {
-    width: fit-content;
-  }
+  .flat-button { width: fit-content; }
 
   .box1 {
     display: flex;
@@ -43,23 +38,30 @@ $text-color: hsl(var(--txt));
     flex-direction: row;
     justify-content: center;
     align-items: stretch;
-    height: 1200px;
   }
 }
 
-@media only screen and (max-width: 768px) and (min-width: 100px) {
+@media (min-width: 1280px) {
+  .home-page {
+    overflow: scroll;
+    height: 95vh !important;
+    padding: 50px 0px 0px 92px;
+
+    .box2 { height: 1200px; }
+  }
+}
+
+@media (max-width: 1279px) {
   .home-page {
     flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-  }
-  .box1 {
-    padding-top: 20px;
   }
 
   .box2 {
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 450px;
+    justify-content: center;
+    margin: 0;
   }
 }
