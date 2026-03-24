@@ -1,0 +1,128 @@
+.timeline {
+  padding: 5rem 1rem 2rem 1rem;
+  width: 100%;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  margin-bottom: 0;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid hsl(var(--txt) / 0.3);
+  background: hsl(var(--bg));
+  flex-shrink: 0;
+  margin-top: 18px;
+  z-index: 1;
+}
+
+.dotCurrent {
+  border-color: hsl(var(--accent));
+  background: hsl(var(--accent) / 0.15);
+}
+
+.line {
+  width: 1px;
+  flex: 1;
+  min-height: 20px;
+  background: hsl(var(--txt) / 0.15);
+}
+
+.item:last-child .line { display: none; }
+
+.card {
+  padding: 10px 12px 28px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.logoWrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid hsl(var(--txt) / 0.1);
+  background: hsl(var(--txt) / 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 3px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.meta { flex: 1; min-width: 0; }
+
+.company {
+  font-size: 13px;
+  font-weight: 500;
+  color: hsl(var(--txt));
+  margin: 0 0 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.role {
+  font-size: 11px;
+  color: hsl(var(--txt) / 0.6);
+  margin: 0;
+}
+
+.badge {
+  font-size: 10px;
+  padding: 1px 7px;
+  border-radius: 20px;
+  background: hsl(var(--accent) / 0.15);
+  color: hsl(var(--accent));
+  font-weight: 400;
+}
+
+.dates {
+  font-size: 11px;
+  color: hsl(var(--txt) / 0.45);
+  margin: 0 0 8px;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullets li {
+  font-size: 11px;
+  color: hsl(var(--txt) / 0.7);
+  line-height: 1.6;
+  padding-left: 12px;
+  position: relative;
+  margin-bottom: 3px;
+}
+
+.bullets li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: hsl(var(--txt) / 0.3);
+}
