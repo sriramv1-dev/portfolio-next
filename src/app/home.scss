@@ -45,9 +45,9 @@ $text-color: hsl(var(--txt));
   .home-page {
     overflow: scroll;
     height: 95vh !important;
-    padding: 50px 0px 0px 92px;
+    padding: 0 0 0 92px;
 
-    .box2 { height: 1200px; }
+    .box2 { height: 100%; }
   }
 }
 

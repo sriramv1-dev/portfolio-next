@@ -3348,7 +3348,7 @@ const MyLogo = () => {
       x="0px"
       y="0px"
       width="100%"
-      viewBox="0 0 1640 2360"
+      viewBox="200 100 1240 2180"
       enableBackground="new 0 0 1640 2360"
     >
       {renderWebDevIconPath()}
