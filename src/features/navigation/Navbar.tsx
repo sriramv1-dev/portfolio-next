@@ -7,11 +7,12 @@ import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
 import ThemeSwitcherWeb from '@/components/ThemeSwitcherWeb';
 import ThemeSwitcherTablet from '@/components/ThemeSwitcherTablet';
+import ThemeSwitcherMobile from '@/components/ThemeSwitcherMobile';
 import '@/components/Navbar.scss';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isDesktop, isTablet } = useResponsive();
+  const { isDesktop, isTablet, isMobile } = useResponsive();
 
   return (
     <div className="nav-bar">
@@ -31,10 +32,13 @@ export default function Navbar() {
         </>
       )}
 
-      {!isDesktop && !isTablet && (
-        <button className="flat-button hamburger-icon" onClick={() => setIsMenuOpen(true)}>
-          <FaBars />
-        </button>
+      {isMobile && (
+        <>
+          <ThemeSwitcherMobile inNavbar={true} />
+          <button className="flat-button hamburger-icon" onClick={() => setIsMenuOpen(true)}>
+            <FaBars />
+          </button>
+        </>
       )}
 
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />

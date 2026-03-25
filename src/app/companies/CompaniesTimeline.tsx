@@ -13,9 +13,12 @@ const accentColors = [
   { dot: '#5F5E5A', bg: '#F1EFE8' },
 ];
 
-export default function CompaniesTimeline() {
+export default function CompaniesTimeline({ isTablet }: { isTablet: boolean }) {
   return (
-    <div className={styles.timeline}>
+    <div
+      className={styles.timeline}
+      style={isTablet ? { paddingTop: '72px', paddingLeft: '1rem', paddingRight: '1rem', maxWidth: '100%', boxSizing: 'border-box' } : undefined}
+    >
       {experienceData.map((job, index) => {
         const isCurrent = !job.to;
         const dateRange = isCurrent ? `${job.from} — Present` : `${job.from} — ${job.to}`;

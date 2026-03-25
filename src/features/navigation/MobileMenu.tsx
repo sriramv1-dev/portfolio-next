@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { IoHomeOutline, IoBusinessOutline, IoExtensionPuzzleOutline, IoBarChartOutline } from 'react-icons/io5';
 import { MdOutlineContactMail } from 'react-icons/md';
 import { AiOutlineClose } from 'react-icons/ai';
-import ThemeSwitcherMobile from '@/components/ThemeSwitcherMobile';
 import styles from './MobileMenu.module.css';
 
 const routes = [
@@ -49,7 +48,6 @@ export default function MobileMenu({ isOpen, onClose }: Props) {
             );
           })}
         </nav>
-        <ThemeSwitcherMobile />
       </div>
     </>
   );
