@@ -6,8 +6,15 @@
   gap: 12px;
   width: 100%;
   padding: 12px 0 0;
-  border-top: 1px solid hsl(var(--txt) / 0.1);
   margin-top: 8px;
+}
+.wrapperNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
 }
 .btn {
   display: flex;

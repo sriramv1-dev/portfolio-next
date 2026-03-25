@@ -3,10 +3,12 @@ import DynamicIcon from './DynamicIcon';
 import { useThemeSwitcher } from '@/hooks/useThemeSwitcher';
 import styles from './ThemeSwitcherMobile.module.css';
 
-export default function ThemeSwitcherMobile() {
+interface Props { inNavbar?: boolean; }
+
+export default function ThemeSwitcherMobile({ inNavbar }: Props) {
   const { theme, toggleTheme, DARK, hue, handleHueChange, isColorPicking, setIsColorPicking } = useThemeSwitcher();
   return (
-    <div className={styles.wrapper}>
+    <div className={inNavbar ? styles.wrapperNav : styles.wrapper}>
       <button className={styles.btn} onClick={toggleTheme}>
         <DynamicIcon name={theme === DARK ? 'BsFillCloudMoonFill' : 'BsFillCloudSunFill'} />
       </button>

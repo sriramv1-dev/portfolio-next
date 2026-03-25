@@ -5,11 +5,11 @@ import CompaniesTimeline from './CompaniesTimeline';
 import CompaniesTimelineMobile from './CompaniesTimelineMobile';
 
 export default function CompaniesPage() {
-  const { isMobile } = useResponsive();
+  const { isMobile, isTablet } = useResponsive();
 
   return (
     <div className="container">
-      {isMobile ? <CompaniesTimelineMobile /> : <CompaniesTimeline />}
+      {isMobile ? <CompaniesTimelineMobile /> : <CompaniesTimeline isTablet={isTablet} />}
     </div>
   );
 }
