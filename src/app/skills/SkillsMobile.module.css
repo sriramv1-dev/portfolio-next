@@ -18,7 +18,8 @@
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: rgba(228,237,230,0.6);
+  color: var(--color-text-primary);
+  opacity: 0.6;
   text-align: center;
 }
 

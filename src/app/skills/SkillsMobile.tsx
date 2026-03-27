@@ -21,7 +21,7 @@ interface Category {
 }
 
 const CATS: Category[] = [
-  { name: 'Front-End', color: '#02fac0', dark: '#012e25', side: 'both',
+  { name: 'Front-End', color: '#1D9E75', dark: '#04342C', side: 'both',
     leftNodes: [
       { name: 'Mobile',  kids: [{ name: 'Xamarin', kids: [] }, { name: 'Flutter', kids: [] }]},
       { name: 'Desktop', kids: [{ name: 'WPF', kids: [] }, { name: 'Win Forms', kids: [] }]},
@@ -86,16 +86,22 @@ function hexRgb(hex: string): [number,number,number] {
 function rgba(hex: string, a: number): string {
   const [r,g,b] = hexRgb(hex); return `rgba(${r},${g},${b},${a})`;
 }
-function mixBg(hex: string, t: number): string {
+function darken(hex: string, amount: number): string {
   const [r,g,b] = hexRgb(hex);
-  return `rgb(${Math.round(r*t+14*(1-t))},${Math.round(g*t+18*(1-t))},${Math.round(b*t+16*(1-t))})`;
+  return `rgb(${Math.max(0,r-amount)},${Math.max(0,g-amount)},${Math.max(0,b-amount)})`;
 }
-
 interface PS { fill:string; stroke:string|null; sw:number; tf:string; fs:number; fw:number; }
-function pillStyle(depth: number, color: string): PS {
-  if (depth===0) return {fill:mixBg(color,0.3),stroke:rgba(color,0.55),sw:0.9,tf:rgba(color,0.85),fs:11,fw:700};
-  if (depth===1) return {fill:mixBg(color,0.14),stroke:rgba(color,0.3),sw:0.8,tf:rgba(color,0.58),fs:10.5,fw:600};
-  return {fill:'none',stroke:rgba(color,0.2),sw:0.8,tf:rgba(color,0.38),fs:10,fw:500};
+function pillStyle(depth: number, color: string, isDark: boolean): PS {
+  const tf = isDark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.75)';
+  if (isDark) {
+    if (depth === 0) return { fill: rgba(color, 0.2), stroke: rgba(color, 0.6), sw: 0.9, tf, fs: 11, fw: 700 };
+    if (depth === 1) return { fill: rgba(color, 0.12), stroke: rgba(color, 0.5), sw: 0.9, tf, fs: 10.5, fw: 600 };
+    return { fill: 'none', stroke: rgba(color, 0.4), sw: 0.9, tf, fs: 10, fw: 500 };
+  } else {
+    if (depth === 0) return { fill: rgba(color, 0.35), stroke: rgba(color, 1), sw: 1.5, tf, fs: 11, fw: 700 };
+    if (depth === 1) return { fill: rgba(color, 0.25), stroke: rgba(color, 0.9), sw: 1.5, tf, fs: 10.5, fw: 600 };
+    return { fill: rgba(color, 0.15), stroke: rgba(color, 0.8), sw: 1.5, tf, fs: 10, fw: 500 };
+  }
 }
 
 function getColX(side: Side, depth: number): number {
@@ -137,35 +143,37 @@ function drawPill(x:number,y:number,w:number,h:number,rx:number,st:PS,text:strin
 }
 
 interface NR { s:string; outerX:number; innerX:number; centerY:number; }
-function drawNode(node:string|SkillNode, depth:number, startY:number, side:Side, color:string): NR {
+function drawNode(node:string|SkillNode, depth:number, startY:number, side:Side, color:string, isDark:boolean): NR {
   const n = typeof node==='string' ? {name:node,kids:[]} : node;
   const bH=nodeBlockH(n,depth), nCY=startY+bH/2;
   const d=Math.min(depth,COL_W.length-1);
   const w=COL_W[d],h=PILL_H[d],rx=PILL_RX[d];
   const x=getColX(side,depth), y=nCY-h/2;
-  const st=pillStyle(depth,color);
+  const st=pillStyle(depth,color,isDark);
   let s=drawPill(x,y,w,h,rx,st,n.name);
   const outerX=side==='left'?x+w:x;
   const innerX=side==='left'?x:x+w;
   const kids=n.kids||[];
   if(kids.length>0) {
+    const connColor = isDark ? color : darken(color, 80);
+    const connOpacity = isDark ? 0.3 : 0.9;
     let kidY=startY;
     kids.forEach(kid=>{
       const kbH=nodeBlockH(kid,depth+1);
-      const {s:ks,outerX:kOX,centerY:kCY}=drawNode(kid,depth+1,kidY,side,color);
+      const {s:ks,outerX:kOX,centerY:kCY}=drawNode(kid,depth+1,kidY,side,color,isDark);
       s+=ks;
-      s+=bez(innerX,nCY,kOX,kCY,color,depth===0?0.25:0.18,depth===0?1:0.8);
+      s+=bez(innerX,nCY,kOX,kCY,connColor,connOpacity,depth===0?1:0.8);
       kidY+=kbH+ROW_GAP;
     });
   }
   return {s,outerX,innerX,centerY:nCY};
 }
 
-function buildSVG(): {markup:string; totalH:number} {
+function buildSVG(isDark: boolean): {markup:string; totalH:number} {
   let totalH=20;
   const layouts=CATS.map(cat=>{ const h=catBlockH(cat); const r={cat,y:totalH,h}; totalH+=h+CAT_GAP; return r; });
   totalH+=20;
-  let out=`<line x1="${SPINE_X}" y1="0" x2="${SPINE_X}" y2="${totalH}" stroke="rgba(228,237,230,0.07)" stroke-width="2"/>`;
+  let out=`<line x1="${SPINE_X}" y1="0" x2="${SPINE_X}" y2="${totalH}" stroke="rgba(128,128,128,${isDark ? 0.25 : 0.4})" stroke-width="2"/>`;
   layouts.forEach(({cat,y,h})=>{
     const {color,dark,side}=cat;
     const cbY=y+h/2-CB_H/2, cbCY=cbY+CB_H/2;
@@ -184,13 +192,17 @@ function buildSVG(): {markup:string; totalH:number} {
       const lNodes=cat.leftNodes||[], rNodes=cat.rightNodes||[];
       const lH=lNodes.reduce((acc,n,i)=>acc+nodeBlockH(n,0)+(i<lNodes.length-1?ROW_GAP:0),0);
       const rH=rNodes.reduce((acc,n,i)=>acc+nodeBlockH(n,0)+(i<rNodes.length-1?ROW_GAP:0),0);
+      const connColor = isDark ? color : darken(color, 80);
+      const connOpacity = isDark ? 0.3 : 0.9;
       let nodeY=y+h/2-lH/2;
-      lNodes.forEach(node=>{ const bH=nodeBlockH(node,0); const {s,outerX,centerY}=drawNode(node,0,nodeY,'left',color); out+=s; out+=bez(outerX,centerY,SPINE_X-CB_W/2,cbCY,color,0.38,1.2); nodeY+=bH+ROW_GAP; });
+      lNodes.forEach(node=>{ const bH=nodeBlockH(node,0); const {s,outerX,centerY}=drawNode(node,0,nodeY,'left',color,isDark); out+=s; out+=bez(outerX,centerY,SPINE_X-CB_W/2,cbCY,connColor,connOpacity,1.2); nodeY+=bH+ROW_GAP; });
       nodeY=y+h/2-rH/2;
-      rNodes.forEach(node=>{ const bH=nodeBlockH(node,0); const {s,outerX,centerY}=drawNode(node,0,nodeY,'right',color); out+=s; out+=bez(outerX,centerY,SPINE_X+CB_W/2,cbCY,color,0.38,1.2); nodeY+=bH+ROW_GAP; });
+      rNodes.forEach(node=>{ const bH=nodeBlockH(node,0); const {s,outerX,centerY}=drawNode(node,0,nodeY,'right',color,isDark); out+=s; out+=bez(outerX,centerY,SPINE_X+CB_W/2,cbCY,connColor,connOpacity,1.2); nodeY+=bH+ROW_GAP; });
     } else {
+      const connColor = isDark ? color : darken(color, 80);
+      const connOpacity = isDark ? 0.3 : 0.9;
       let nodeY=y;
-      (cat.nodes||[]).forEach(node=>{ const bH=nodeBlockH(node,0); const {s,outerX,centerY}=drawNode(node,0,nodeY,side as Side,color); out+=s; out+=bez(outerX,centerY,catEdgeX,cbCY,color,0.38,1.2); nodeY+=bH+ROW_GAP; });
+      (cat.nodes||[]).forEach(node=>{ const bH=nodeBlockH(node,0); const {s,outerX,centerY}=drawNode(node,0,nodeY,side as Side,color,isDark); out+=s; out+=bez(outerX,centerY,catEdgeX,cbCY,connColor,connOpacity,1.2); nodeY+=bH+ROW_GAP; });
     }
   });
   return {markup:out,totalH};
@@ -198,13 +210,20 @@ function buildSVG(): {markup:string; totalH:number} {
 
 export default function SkillsMobile() {
   const svgRef = useRef<SVGSVGElement>(null);
-  useEffect(()=>{
-    if(!svgRef.current) return;
-    const {markup,totalH}=buildSVG();
-    svgRef.current.setAttribute('viewBox',`0 0 ${SVG_W} ${totalH}`);
-    svgRef.current.setAttribute('height',String(totalH));
-    svgRef.current.innerHTML=`<g class="${styles.animate}">${markup}</g>`;
-  },[]);
+  useEffect(() => {
+    function render() {
+      if (!svgRef.current) return;
+      const isDark = document.documentElement.getAttribute('color-scheme') === 'dark';
+      const { markup, totalH } = buildSVG(isDark);
+      svgRef.current.setAttribute('viewBox', `0 0 ${SVG_W} ${totalH}`);
+      svgRef.current.setAttribute('height', String(totalH));
+      svgRef.current.innerHTML = `<g class="${styles.animate}">${markup}</g>`;
+    }
+    render();
+    const observer = new MutationObserver(render);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['color-scheme'] });
+    return () => observer.disconnect();
+  }, []);
   return (
     <div className={styles.root}>
       <p className={styles.title}>Skills &amp; Technologies</p>
