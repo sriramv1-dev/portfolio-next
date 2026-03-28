@@ -1,7 +1,7 @@
 # Portfolio-Next — Architecture & Handover
 **Project:** portfolio-next (Next.js 15 + React 19)
 **Developer:** Sriram Voonna
-**Last Updated:** March 27, 2026
+**Last Updated:** March 28, 2026
 **GitHub:** https://github.com/sriramv1-dev/portfolio-next
 **Live URL:** https://sriram-voonna-portfolio.vercel.app
 **Local:** /Users/sriram_sweta/Documents/GitHub/portfolio-next
@@ -299,7 +299,9 @@ COL_GAP = 8, ROW_GAP = 5, CAT_GAP = 16
 |---|---|---|
 | #4 | Mobile theme icons moved to top navbar | fix/4-mobile-sidemenu-theme-icons |
 | #7 | SkillsMobile vertical spine tree | feat/7-skills-mobile-spine |
+| #14 | Netlify redirect to Vercel URL | fix/14-netlify-redirect |
 | #17 | Home page empty space + SVG viewBox | fix/17-web-hero-empty-space |
+| #25 | AI Integration + Spring Boot + MongoDB + Java added to skills data | feat/25-ai-integration-skills-data |
 | #27 | SkillsMobile light mode pill fills | fix/27-skills-mobile-light-mode |
 
 ---
@@ -318,7 +320,7 @@ COL_GAP = 8, ROW_GAP = 5, CAT_GAP = 16
 | #11 | Timeline left/right structure | Tablet | High |
 | #12 | Ideas and tools text spacing | Tablet | Low |
 | #13 | Contact page content centered | Tablet | Medium |
-| **#14** | **Redirect Netlify to new app link** | — | **High** |
+| ~~#14~~ | ~~Redirect Netlify to new app link~~ | — | ✅ Done |
 | #15 | Skills page redesign | Tablet | Low |
 | #16 | Add AI to skills | Tablet | Low |
 | #18 | Home page content centering | Web | Medium |
@@ -326,15 +328,15 @@ COL_GAP = 8, ROW_GAP = 5, CAT_GAP = 16
 | #20 | Skills start point indicator | Web | Low |
 | #21 | Change color palette | Web | Low |
 | #22 | Add AI to skills | Web | Low |
-| **#25** | **Add AI Integration to web + tablet skills data** | Web+Tablet | Medium |
+| ~~#25~~ | ~~Add AI Integration to web + tablet skills data~~ | Web+Tablet | ✅ Done |
+| #30 | SkillsBig desktop D3 chart redesign — fix layout overflow and visual polish | Web | High |
 
 ---
 
 ## Immediate Next Tasks (pick up here)
-1. **#14 — Netlify redirect** — fastest, ~5 min
-2. **#25 — AI Integration to tablet + web skills** — add to `src/lib/data.ts` tree, verify D3 renders
-3. **#6 — Companies mobile card accent color border** — `CompaniesTimelineMobile.tsx`, index-based accent colors
-4. **#11 — Timeline tablet structure** — partially fixed, needs final polish
+1. **#30 — SkillsBig D3 redesign** — fix first-load blank render (#19), rebalance layout for new categories
+2. **#6 — Companies mobile card accent color border** — `CompaniesTimelineMobile.tsx`, index-based accent colors
+3. **#11 — Timeline tablet structure** — partially fixed, needs final polish
 
 ---
 
