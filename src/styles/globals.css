@@ -31,6 +31,7 @@
   --skills-typescript-light: 216 48% 49%;
   --skills-c-sharp-light: 108 46% 41%;
   --skills-dart-light: 213 59% 37%;
+  --skills-ai-integration-light: 271 91% 65%;
 
   --companies-tcs-light: 195, 50%, 50%;
   --companies-t1d1-light: 15, 48%, 64%;
@@ -73,6 +74,7 @@
   --skills-typescript-dark: 216 48% 49%;
   --skills-c-sharp-dark: 108 84% 41%;
   --skills-dart-dark: 213 90% 37%;
+  --skills-ai-integration-dark: 271 91% 65%;
 
   --companies-tcs-dark: 195, 100%, 50%;
   --companies-t1d1-dark: 15, 78%, 64%;
@@ -103,6 +105,7 @@
     --skills-typescript: var(--skills-typescript-dark);
     --skills-c-sharp: var(--skills-c-sharp-dark);
     --skills-dart: var(--skills-dart-dark);
+    --skills-ai-integration: var(--skills-ai-integration-dark);
     --companies-tcs: var(--companies-tcs-dark);
     --companies-t1d1: var(--companies-t1d1-dark);
     --companies-mantechapps: var(--companies-mantechapps-dark);
@@ -134,6 +137,7 @@
     --skills-typescript: var(--skills-typescript-light);
     --skills-c-sharp: var(--skills-c-sharp-light);
     --skills-dart: var(--skills-dart-light);
+    --skills-ai-integration: var(--skills-ai-integration-light);
     --companies-tcs: var(--companies-tcs-light);
     --companies-t1d1: var(--companies-t1d1-light);
     --companies-mantechapps: var(--companies-mantechapps-light);
@@ -164,6 +168,7 @@
   --skills-typescript: var(--skills-typescript-dark);
   --skills-c-sharp: var(--skills-c-sharp-dark);
   --skills-dart: var(--skills-dart-dark);
+  --skills-ai-integration: var(--skills-ai-integration-dark);
   --companies-tcs: var(--companies-tcs-dark);
   --companies-t1d1: var(--companies-t1d1-dark);
   --companies-mantechapps: var(--companies-mantechapps-dark);
@@ -193,6 +198,7 @@
   --skills-typescript: var(--skills-typescript-light);
   --skills-c-sharp: var(--skills-c-sharp-light);
   --skills-dart: var(--skills-dart-light);
+  --skills-ai-integration: var(--skills-ai-integration-light);
   --companies-tcs: var(--companies-tcs-light);
   --companies-t1d1: var(--companies-t1d1-light);
   --companies-mantechapps: var(--companies-mantechapps-light);

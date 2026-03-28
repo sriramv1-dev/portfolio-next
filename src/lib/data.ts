@@ -24,10 +24,6 @@ export const skillsData = {
               hexColor: '#61DBFB',
               hslColor: 'hsl(var(--skills-react-js))',
               icon: 'FaReact',
-              children: [
-                { name: 'Flux', attr: 'Framework', icon: 'SiInfluxdb' },
-                { name: 'Redux', attr: 'Framework', icon: 'SiRedux' },
-              ],
             },
             { name: '', code: '' },
             { name: 'Angular', code: 'typescript', icon: 'SiAngular' },
@@ -67,6 +63,19 @@ export const skillsData = {
       icon: 'AiFillApi',
       children: [
         { name: 'Node', code: ['javascript', 'typescript'], icon: 'FaNodeJs' },
+        { name: 'Spring Boot', code: 'Java', icon: 'SiSpringboot' },
+      ],
+    },
+    {
+      name: 'AI Integration',
+      hexColor: '#a855f7',
+      hslColor: 'hsl(var(--skills-ai-integration))',
+      icon: 'BsRobot',
+      children: [
+        { name: 'Claude', icon: 'SiAnthropic' },
+        { name: 'ChatGPT', icon: 'SiOpenai' },
+        { name: 'Gemini', icon: 'SiGooglegemini' },
+        { name: 'MCP', icon: 'BsPlugin' },
       ],
     },
     {
@@ -77,6 +86,7 @@ export const skillsData = {
       children: [
         { name: 'MS-SQL', icon: 'SiMicrosoftsqlserver' },
         { name: 'Oracle-SQL', icon: 'SiOracle' },
+        { name: 'MongoDB', icon: 'SiMongodb' },
       ],
     },
     {
@@ -115,6 +125,7 @@ export const skillsData = {
         { name: 'typescript', icon: 'SiTypescript', hexColor: '#4272BA', hslColor: 'hsl(var(--skills-typescript))' },
         { name: 'C#', icon: 'SiCsharp', hexColor: '#4B9738', hslColor: 'hsl(var(--skills-c-sharp))' },
         { name: 'Dart', icon: 'SiDart', hexColor: '#275998', hslColor: 'hsl(var(--skills-dart))' },
+        { name: 'Java', icon: 'FaJava' },
       ],
     },
   ],
