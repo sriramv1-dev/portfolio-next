@@ -1,26 +1,18 @@
-$base-color: hsl(var(--accent));
-$text-color: hsl(var(--txt));
+.skills-big-wrapper {
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  position: relative;
+}
 
-.skills-page {
-  display: flex;
-  flex-direction: column;
-  color: $base-color;
-  justify-content: center;
-  align-items: center;
-  path {
-    fill: none;
-  }
-
-  text {
-    font-size: 15px;
-    -o-table-baseline: bottom;
-    text-anchor: start;
-  }
-
-  rect {
-    fill: none;
-    height: 30px;
-    display: block;
-    margin: 0 auto;
-  }
+.skills-big-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  opacity: 0.4;
+  font-family: -apple-system, sans-serif;
 }

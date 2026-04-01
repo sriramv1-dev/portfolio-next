@@ -38,6 +38,7 @@ const CATS: Category[] = [
   { name: 'Back-End', color: '#5cb50e', dark: '#0e2003', side: 'right', nodes: [
       { name: 'Node.js', kids: [] },
       { name: 'Spring Boot', kids: [] },
+      { name: 'Express', kids: [] },
   ]},
   { name: 'AI Integration', color: '#a855f7', dark: '#1a0133', side: 'left', nodes: [
       { name: 'Claude', kids: [] },
@@ -49,10 +50,12 @@ const CATS: Category[] = [
       { name: 'MS-SQL', kids: [] },
       { name: 'Oracle-SQL', kids: [] },
       { name: 'MongoDB', kids: [] },
+      { name: 'Firestore', kids: [] },
   ]},
   { name: 'Cloud', color: '#1982c4', dark: '#021525', side: 'left', nodes: [
       { name: 'Azure', kids: [] },
       { name: 'AWS', kids: [] },
+      { name: 'Firebase', kids: [] },
       { name: 'Docker', kids: [] },
       { name: 'Jenkins', kids: [] },
   ]},
