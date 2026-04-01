@@ -303,6 +303,7 @@ COL_GAP = 8, ROW_GAP = 5, CAT_GAP = 16
 | #17 | Home page empty space + SVG viewBox | fix/17-web-hero-empty-space |
 | #25 | AI Integration + Spring Boot + MongoDB + Java added to skills data | feat/25-ai-integration-skills-data |
 | #27 | SkillsMobile light mode pill fills | fix/27-skills-mobile-light-mode |
+| #30 | Desktop SkillsBig redesign — bilateral mind map with D3 bezier curves, weighted pills, theme reactive, zoom+pan | feat/skills-desktop-redesign |
 
 ---
 
@@ -334,9 +335,10 @@ COL_GAP = 8, ROW_GAP = 5, CAT_GAP = 16
 ---
 
 ## Immediate Next Tasks (pick up here)
-1. **#30 — SkillsBig D3 redesign** — fix first-load blank render (#19), rebalance layout for new categories
-2. **#6 — Companies mobile card accent color border** — `CompaniesTimelineMobile.tsx`, index-based accent colors
-3. **#11 — Timeline tablet structure** — partially fixed, needs final polish
+1. Fix remaining SkillsBig connector issues (catW/leafW weight scaling still affecting AI Integration)
+2. **#6 — Companies mobile card accent color border**
+3. **#11 — Timeline tablet structure**
+4. Font ticket — Playwrite DK Uloopet for display text
 
 ---
 
