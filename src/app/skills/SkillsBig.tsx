@@ -234,7 +234,10 @@ function drawPill(
 function renderChart(g: GSelection, isDark: boolean): void {
   const accentRaw = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
   if (!accentRaw) return;
+  console.log('[SkillsBig] accentRaw:', JSON.stringify(accentRaw));
   const [h, s, l] = accentRaw.split(' ');
+  console.log('[SkillsBig] h/s/l:', h, s, l);
+  console.log('[SkillsBig] rootFill will be:', `hsla(${h}, ${s}, ${l}, 0.2)`);
   const rootFill   = `hsla(${h}, ${s}, ${l}, 0.2)`;
   const rootStroke = `hsla(${h}, ${s}, ${l}, 0.7)`;
   const rootTf     = `hsla(${h}, ${s}, ${l}, 1)`;
