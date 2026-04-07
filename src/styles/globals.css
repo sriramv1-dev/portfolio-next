@@ -227,7 +227,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font: 300 11px/1.4 var(--font-reem-kufi-ink), sans-serif;
+  font: 400 11px/1.4 var(--font-body), sans-serif;
   background-color: hsl(var(--bg));
   color: hsl(var(--txt));
   display: block;

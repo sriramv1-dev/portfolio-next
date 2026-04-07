@@ -28,8 +28,8 @@ export default function CompaniesTimelineMobile() {
                 <Image
                   src={job.logo}
                   alt={job.company}
-                  width={36}
-                  height={36}
+                  width={48}
+                  height={48}
                   className={styles.logo}
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
                 />
@@ -38,7 +38,7 @@ export default function CompaniesTimelineMobile() {
                 {job.company}
                 {isCurrent && <span className={styles.badge}>Current</span>}
               </p>
-              <p className={styles.role}>{job.role}</p>
+
               <p className={styles.dates}>{dateRange}</p>
             </div>
 
@@ -49,7 +49,7 @@ export default function CompaniesTimelineMobile() {
 
             <div className={styles.respSide}>
               <div className={styles.respCard} style={{ borderLeftColor: accent.dot }}>
-                <p className={styles.respLabel}>Responsibilities</p>
+                <p className={styles.respLabel}>{job.role}</p>
                 <ul className={styles.bullets}>
                   {job.bullets.map((b, i) => (
                     <li key={i}>{b}</li>

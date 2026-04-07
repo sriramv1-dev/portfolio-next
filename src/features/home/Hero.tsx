@@ -28,7 +28,7 @@ export default function Hero() {
       animate="visible"
       style={{ paddingTop, paddingLeft }}
     >
-      <motion.h3 variants={itemVariants}>Hi.. <br /> I am</motion.h3>
+      <motion.h3 variants={itemVariants}>Hi.. I am</motion.h3>
       <motion.h1 variants={itemVariants}>Sriram Voonna</motion.h1>
       <motion.h2 variants={itemVariants}>Full Stack Developer / Javascript</motion.h2>
       <motion.div variants={itemVariants}>

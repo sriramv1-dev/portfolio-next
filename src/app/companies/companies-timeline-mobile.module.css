@@ -51,8 +51,8 @@
 }
 
 .logoWrapper {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 6px;
   border: 1px solid hsl(var(--txt) / 0.1);
   background: hsl(var(--txt) / 0.05);
@@ -78,7 +78,7 @@
 }
 
 .role { font-size: 10px; color: hsl(var(--txt) / 0.6); margin: 0; }
-.dates { font-size: 10px; color: hsl(var(--txt) / 0.45); margin: 0; }
+.dates { font-size: 10px; color: hsl(var(--txt) / 0.45); margin: 0; white-space: nowrap; }
 
 .badge {
   font-size: 9px;

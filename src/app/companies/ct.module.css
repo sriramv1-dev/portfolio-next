@@ -45,8 +45,8 @@
   text-align: right;
 }
 .logoWrapper {
-  width: 48px;
-  height: 48px;
+  width: 72px;
+  height: 72px;
   border-radius: 8px;
   border: 1px solid hsl(var(--txt) / 0.1);
   background: hsl(var(--txt) / 0.05);

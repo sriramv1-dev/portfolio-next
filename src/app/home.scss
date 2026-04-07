@@ -14,12 +14,13 @@ $text-color: hsl(var(--txt));
     line-height: 53px;
     margin: 0;
     font-weight: 400;
+    font-family: var(--font-playwrite), serif;
   }
 
   h3 {
     color: $text-color;
     font-size: 36px;
-    line-height: 33px;
+    line-height: 1.5;
     margin: 0;
     font-weight: 300;
   }
@@ -31,6 +32,7 @@ $text-color: hsl(var(--txt));
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    gap: 12px;
   }
 
   .box2 {
