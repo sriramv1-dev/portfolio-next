@@ -1,12 +1,13 @@
 .timeline {
-  padding: 5rem 1rem 2rem 1rem;
+  padding: 5rem 0.75rem 2rem 0.75rem;
   width: 100%;
+  box-sizing: border-box;
 }
 
-.item {
+.row {
   display: grid;
-  grid-template-columns: 32px 1fr;
-  margin-bottom: 0;
+  grid-template-columns: 100px 24px 1fr;
+  min-width: 0;
 }
 
 .center {
@@ -22,7 +23,7 @@
   border: 2px solid hsl(var(--txt) / 0.3);
   background: hsl(var(--bg));
   flex-shrink: 0;
-  margin-top: 18px;
+  margin-top: 20px;
   z-index: 1;
 }
 
@@ -38,17 +39,15 @@
   background: hsl(var(--txt) / 0.15);
 }
 
-.item:last-child .line { display: none; }
+.row:last-child .line { display: none; }
 
-.card {
-  padding: 10px 12px 28px;
-}
-
-.cardHeader {
+.companySide {
+  padding: 12px 8px 24px 0;
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  text-align: right;
 }
 
 .logoWrapper {
@@ -60,62 +59,62 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
   overflow: hidden;
   padding: 3px;
 }
 
-.logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.meta { flex: 1; min-width: 0; }
+.logo { width: 100%; height: 100%; object-fit: contain; }
 
 .company {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   color: hsl(var(--txt));
-  margin: 0 0 2px;
+  margin: 0;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-.role {
-  font-size: 11px;
-  color: hsl(var(--txt) / 0.6);
-  margin: 0;
-}
+.role { font-size: 10px; color: hsl(var(--txt) / 0.6); margin: 0; }
+.dates { font-size: 10px; color: hsl(var(--txt) / 0.45); margin: 0; }
 
 .badge {
-  font-size: 10px;
-  padding: 1px 7px;
+  font-size: 9px;
+  padding: 1px 6px;
   border-radius: 20px;
   background: hsl(var(--accent) / 0.15);
   color: hsl(var(--accent));
   font-weight: 400;
 }
 
-.dates {
-  font-size: 11px;
-  color: hsl(var(--txt) / 0.45);
-  margin: 0 0 8px;
+.respSide { padding: 12px 0 24px 8px; }
+
+.respCard {
+  border-left: 2px solid hsl(var(--txt) / 0.2);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 10px;
+  background: hsl(var(--txt) / 0.04);
+  box-sizing: border-box;
 }
 
-.bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.respLabel {
+  font-size: 10px;
+  font-weight: 500;
+  color: hsl(var(--txt) / 0.45);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
 }
+
+.bullets { list-style: none; padding: 0; margin: 0; }
 
 .bullets li {
-  font-size: 11px;
+  font-size: 10px;
   color: hsl(var(--txt) / 0.7);
   line-height: 1.6;
-  padding-left: 12px;
+  padding-left: 10px;
   position: relative;
   margin-bottom: 3px;
 }

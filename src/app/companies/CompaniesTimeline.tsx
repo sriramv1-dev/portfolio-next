@@ -25,7 +25,7 @@ export default function CompaniesTimeline({ isTablet }: { isTablet: boolean }) {
         const accent = accentColors[index % accentColors.length];
 
         return (
-          <div key={job.id} className={styles.row}>
+          <div key={job.id} className={isTablet ? styles.rowTablet : styles.row}>
             <div className={styles.companySide}>
               <div className={styles.logoWrapper}>
                 <Image
@@ -46,7 +46,7 @@ export default function CompaniesTimeline({ isTablet }: { isTablet: boolean }) {
             </div>
 
             <div className={styles.center}>
-              <div className={styles.dot} style={{ borderColor: accent.dot, background: accent.bg }} />
+              <div className={styles.dot} style={{ borderColor: accent.dot, background: `color-mix(in srgb, ${accent.dot} 15%, transparent)` }} />
               <div className={styles.line} />
             </div>
 
