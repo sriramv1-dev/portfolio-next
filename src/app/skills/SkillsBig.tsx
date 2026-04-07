@@ -233,6 +233,7 @@ function drawPill(
 
 function renderChart(g: GSelection, isDark: boolean): void {
   const accentRaw = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+  if (!accentRaw) return;
   const [h, s, l] = accentRaw.split(' ');
   const rootFill   = `hsla(${h}, ${s}, ${l}, 0.2)`;
   const rootStroke = `hsla(${h}, ${s}, ${l}, 0.7)`;
@@ -357,7 +358,15 @@ const SkillsBig = () => {
       renderChart(g, isDark);
     }
 
-    setTimeout(render, 100);
+    function renderWithRetry(attempts = 0) {
+      const accentRaw = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      if (!accentRaw && attempts < 10) {
+        setTimeout(() => renderWithRetry(attempts + 1), 50);
+        return;
+      }
+      render();
+    }
+    renderWithRetry();
 
     const observer = new MutationObserver(render);
     observer.observe(document.documentElement, {
