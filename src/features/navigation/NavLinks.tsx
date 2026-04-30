@@ -19,7 +19,7 @@ const routes: NavRoute[] = [
   { key: 'projects', label: 'Projects',  icon: IoExtensionPuzzleOutline, path: '/projects' },
 ];
 
-const comingSoon = ['projects'];
+const comingSoon: string[] = [];
 
 interface Props {
   isMobile?: boolean;
