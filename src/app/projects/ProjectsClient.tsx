@@ -1,31 +1,23 @@
 'use client';
 
-import { useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { IoArrowForwardOutline } from 'react-icons/io5';
+import { useMemo, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { IoArrowBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
+import Image from 'next/image';
 import { ProjectCard } from '@/features/projects';
-
-interface Project {
-  title: string;
-  description: string;
-  image: string;
-  url: string;
-  tags: string[];
-  isVideo: boolean;
-}
+import { ProjectsData } from '@/data/projects';
 
 interface ProjectsClientProps {
-  projects: Project[];
+  projects: ProjectsData;
 }
 
 export default function ProjectsClient({ projects }: ProjectsClientProps) {
-  const webProjects = useMemo(() => projects.filter((p) => !p.isVideo), [projects]);
-  const videoProjects = useMemo(() => projects.filter((p) => p.isVideo), [projects]);
+  const [expandedSection, setExpandedSection] = useState<'web' | 'video' | null>(null);
 
-  const sections = [
-    { title: 'Web Applications', projects: webProjects },
-    { title: 'Video Content', projects: videoProjects },
-  ];
+  const sections = useMemo(() => [
+    { id: 'web', title: 'Web Applications', projects: projects.web, isVideo: false },
+    { id: 'video', title: 'Video Content', projects: projects.video, isVideo: true },
+  ], [projects]);
 
   return (
     <div className="container projects-page">
@@ -37,43 +29,77 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
         >
           Projects
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Explore my latest work, ranging from interactive web applications to 
-          creative visual storytelling. Swipe or scroll horizontally to browse.
-        </motion.p>
+        {expandedSection && (
+          <motion.button 
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="back-button"
+            onClick={() => setExpandedSection(null)}
+          >
+            <IoArrowBackOutline /> Back to Overview
+          </motion.button>
+        )}
       </div>
 
-      {sections.map((section, idx) => (
-        section.projects.length > 0 && (
-          <motion.section 
-            key={section.title} 
-            className="project-section"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: idx * 0.2 }}
-          >
-            <div className="section-header">
-              <h2>{section.title}</h2>
-              {section.projects.length > 1 && (
-                <div className="scroll-hints">
-                  <span>Scroll <IoArrowForwardOutline /></span>
-                </div>
-              )}
-            </div>
-            <div className="projects-grid">
-              {section.projects.map((project) => (
-                <div key={project.url} className="project-card-wrapper">
-                  <ProjectCard {...project} />
+      <div className="projects-container">
+        <AnimatePresence mode="wait">
+          {!expandedSection ? (
+            <motion.div 
+              key="overview"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="overview-stacks"
+              style={{ display: 'flex', gap: '40px', justifyContent: 'center', flexWrap: 'wrap'}}
+            >
+              {sections.map((section) => (
+                <div key={section.id} className="category-stack-wrapper">
+                  <div className="stack-container" onClick={() => setExpandedSection(section.id as 'web' | 'video')}>
+                    {section.projects.slice(0, 3).map((project, idx) => (
+                      <div key={project.url + idx} className="stacked-card">
+                        <Image 
+                          src={project.image} 
+                          alt={project.title} 
+                          fill 
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                    <div className="stack-overlay">
+                      <div className="overlay-content">
+                        <h2>{section.title}</h2>
+                        <div className="view-all-hint">
+                          <span>View All ({section.projects.length})</span>
+                          <IoChevronForwardOutline />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ))}
-            </div>
-          </motion.section>
-        )
-      ))}
+            </motion.div>
+          ) : (
+            <motion.div 
+              key="gallery"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              className="expanded-gallery"
+            >
+              <div className="projects-grid">
+                {sections.find(s => s.id === expandedSection)?.projects.map((project) => (
+                  <div key={project.url} className="project-card-wrapper">
+                    <ProjectCard 
+                      {...project} 
+                      isVideo={expandedSection === 'video'} 
+                    />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
